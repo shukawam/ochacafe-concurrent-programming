@@ -1,4 +1,4 @@
-package com.oracle.jp.utils;
+package com.oracle.jp.demo.utils;
 
 import java.util.concurrent.TimeUnit;
 

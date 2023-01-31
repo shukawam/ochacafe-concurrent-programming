@@ -1,4 +1,4 @@
-package com.oracle.jp.virtualthread;
+package com.oracle.jp.demo.demo3;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -6,11 +6,11 @@ import java.util.concurrent.ThreadFactory;
 import java.util.logging.Logger;
 import java.util.stream.IntStream;
 
-import com.oracle.jp.utils.FizzBuzzTask;
-import com.oracle.jp.utils.DemoUtils;
+import com.oracle.jp.demo.utils.FizzBuzzTask;
+import com.oracle.jp.demo.utils.FizzBuzzUtils;
 
-public class VirtualThreadMain {
-  private static final Logger logger = Logger.getLogger(VirtualThreadMain.class.getName());
+public class VirtualThreadMoreSleepMain {
+  private static final Logger logger = Logger.getLogger(VirtualThreadMoreSleepMain.class.getName());
 
   public static void main(String[] args) {
     long start = System.currentTimeMillis();
@@ -32,8 +32,8 @@ public class VirtualThreadMain {
     try (ExecutorService exector = Executors.newThreadPerTaskExecutor(factory)) {
       IntStream.rangeClosed(1, 1_000_000).forEach(i -> {
         exector.submit(() -> {
-          task.execWithSleep(i, 1_000);
-          DemoUtils.log(i + ": " + task.exec(i));
+          task.execWithSleep(i, 10_000);
+          FizzBuzzUtils.log(i, task.exec(i));
         });
       });
     }

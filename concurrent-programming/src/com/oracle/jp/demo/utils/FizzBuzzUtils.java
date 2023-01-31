@@ -1,14 +1,14 @@
-package com.oracle.jp.utils;
+package com.oracle.jp.demo.utils;
 
 import java.util.concurrent.TimeUnit;
 
-public class DemoUtils {
+public class FizzBuzzUtils {
 
-    private DemoUtils() {
+    private FizzBuzzUtils() {
     }
 
-    public static void log(String message) {
-        System.out.println(String.format("[%s]: %s", Thread.currentThread().getName(), message));
+    public static void log(int i, String message) {
+        System.out.println(String.format("[%s]: %s - %s", Thread.currentThread().getName(), i, message));
     }
 
     public static void sleep(long seconds) {
