@@ -1,6 +1,6 @@
 
 # 1st stage, build the app
-FROM maven:3.8.4-openjdk-17-slim as build
+FROM maven:3.8.7-eclipse-temurin-19 as build
 
 WORKDIR /helidon
 
@@ -18,13 +18,13 @@ RUN mvn package -DskipTests
 RUN echo "done!"
 
 # 2nd stage, build the runtime image
-FROM openjdk:17-jdk-slim
+FROM eclipse-temurin:19-jdk
 WORKDIR /helidon
 
 # Copy the binary built in the 1st stage
-COPY --from=build /helidon/target/helidon-mp-client.jar ./
+COPY --from=build /helidon/target/helidon-nima-client.jar ./
 COPY --from=build /helidon/target/libs ./libs
 
-CMD ["java", "-jar", "helidon-mp-client.jar"]
+CMD ["java", "--enable-preview" ,"-jar", "helidon-nima-client.jar"]
 
 EXPOSE 8080
