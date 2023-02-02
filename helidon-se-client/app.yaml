@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
         - name: helidon-se-client
-          image: nrt.ocir.io/orasejapan/shukawam/helidon-se-client:1.1
+          image: nrt.ocir.io/orasejapan/shukawam/helidon-se-client:1.3
           imagePullPolicy: IfNotPresent
           ports:
             - name: api

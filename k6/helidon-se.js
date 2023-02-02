@@ -7,6 +7,6 @@ export const options = {
 }
 
 export default function () {
-    http.get('http://helidon-nima-client.shukawam.me/client/say');
+    http.get('http://helidon-se-client.shukawam.me/client/say');
     sleep(1)
 }

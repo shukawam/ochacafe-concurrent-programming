@@ -1,6 +1,10 @@
 package com.oracle.jp;
 
 import io.helidon.webserver.Routing.Rules;
+
+import java.time.Duration;
+
+import io.helidon.common.http.DataChunk;
 import io.helidon.common.reactive.Single;
 import io.helidon.webclient.WebClient;
 import io.helidon.webserver.ServerRequest;
@@ -19,8 +23,13 @@ public class ClientService implements Service {
                 .builder()
                 .baseUri("http://cowweb-helidon:8080")
                 .build();
-        Single<String> singleResponse = webClient.get().path("/cowsay/say").request(String.class);
-        res.send(singleResponse.await());
+        webClient
+                .get()
+                .path("/cowsay/say")
+                .request(String.class)
+                .map(it -> it)
+                .onError(res::send)
+                .forSingle(res::send);
     }
 
 }
