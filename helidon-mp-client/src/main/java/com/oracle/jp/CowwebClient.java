@@ -9,7 +9,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.QueryParam;
 
 @Path("/cowsay")
-@RegisterRestClient(configKey = "cowwebClient")
+@RegisterRestClient(baseUri = "http://cowweb-helidon:8080")
 public interface CowwebClient {
 
     @GET

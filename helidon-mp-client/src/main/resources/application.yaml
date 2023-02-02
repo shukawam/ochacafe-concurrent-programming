@@ -8,4 +8,4 @@ metrics:
   rest-request:
     enabled: false
 
-cowwebClient/mp-rest/url: http://localhost:8080
+cowwebClient/mp-rest/url: http://cowweb-helidon:8080

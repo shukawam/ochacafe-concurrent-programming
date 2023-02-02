@@ -16,10 +16,10 @@ public class NimaMain {
         
         Config config = Config.create();
 
-        String baseUrl = config.get("cowweb.baseUrl").asString().get();
+        // String baseUrl = config.get("http://cowweb-helidon:8080").asString().get();
 
         ClientService.client(Http1Client.builder()
-                .baseUri(baseUrl)
+                .baseUri("http://cowweb-helidon:8080")
                 .build());
     }
 
